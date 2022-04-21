@@ -1,0 +1,67 @@
+import tkinter as tk
+import random 
+from tkinter import *
+from tkinter import messagebox
+        
+def exit1():
+    choice = messagebox.askyesno("Выход из приложения","Действительной выйти? ")
+    if choice:
+        win.destroy()
+
+
+def start_win():
+    win2 = Toplevel(win)# мое 2 окно
+    win2.geometry(f"700x200+300+300") # размер окна
+    win2.title('Предсказание от Бабки гадалки') # название окна
+    win2.wm_attributes("-topmost",1)
+    win2.grab_set()#забрать себе фокус
+    #win2.after(8000, lambda: win2.destroy())
+    win2.focus_set()#захватывает фокус
+    
+
+    #messagebox.showwarning('Выберите пол', 'Вы не выбрали свой пол. Выберете его!',)
+    asd = name.get()
+    dfg = male_or_female.get()
+    
+    if dfg == 1:
+        man= Label(win2,text='Уважаемый'+' '+asd)#указал место выводы в место win win2 все заработало
+        man.place(x=1,y =1)#print('Уважаемый '+ asd)
+    elif dfg == 2:
+        woman= Label(win2,text='Уважаемая'+' '+asd)#указал место выводы в место win win2 все заработало
+        woman.place(x=1,y=1)#print('Уважаемая '+ asd)
+    elif dfg == 0:
+        messagebox.showwarning('Выберите пол', 'Вы не выбрали свой пол. Выберете его!',command=win2.destroy()) # окно ошибка если не выбран пол
+        
+    prediction = ['Сегодня вы будете подобны скитающемуся рыцарю.',
+                     'Ни в коем случае не останавливайтесь на половине дороги.',
+                     'Ваши действия могут не соответствовать чьим-то понятиям.',
+                     'Придется поступиться рядом амбиций, дабы не переживать слишком больших разочарований.',
+                     'Сегодня очень важны будут полезные связи.']
+    fin=Label(win2,text="Предсказание от Бабки гадалки -"+random.choice(prediction))#указал место выводы в место win win2 все заработало
+    fin.place(x=1,y=20)
+
+win = Tk()
+win.geometry(f"300x179+200+200") # размер окна
+win.resizable(False, False)# функция не дает растягивать окно
+win.title('Бабка гадалка') # название окна
+win['bg'] = '#000' # цвет окна
+win.wm_attributes("-topmost",1)
+Label(win, text='Введите ИФО').grid(row=0,column=0, stick='we') 
+name = tk.Entry(win) # поле для ввода текста
+male_or_female = tk.IntVar()# переменная радио кнопки
+name.grid(row=1,column=0, stick='we')
+tk.IntVar = 0
+tk.Label(win, text='Выберите пол',padx=40, pady=5).grid(row=3,column=0, stick='we')
+
+btn1=tk.Radiobutton(win, text = 'Мужчина', variable=male_or_female, value=1)
+btn1.grid(row=4,column=0, stick='we') # тут пытался вставить command на значение select_level 
+btn2=tk.Radiobutton(win, text='Женщина', variable=male_or_female, value=2)
+btn2.grid(row=5,column=0, stick='we')
+  
+win_but1=tk.Button(win,text='Получить предсказание', command=start_win,padx=80, pady=4)
+win_but1.grid(row=6,column=0, stick='w')
+
+win_but_exit = tk.Button(win,text='Выход', command=exit1)
+win_but_exit.grid(row=7,column=0, stick='we')
+
+win.mainloop()                 
