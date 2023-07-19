@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Levochka108
+- 👋 Hi, I’m Dmitrii Klochkov @Levochka108
 - 👀 I’m interested in programming, play drum, take pictures.
 - 🌱 I’m currently learning, study on my own. To be honest, it's hard.
 - 💞️ I’m looking to collaborate on everyone who is interested :)
